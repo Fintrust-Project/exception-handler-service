@@ -8,12 +8,12 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.5</version>
-		<relativePath/>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<groupId>com.fintrust</groupId>
 	<artifactId>exception-handler-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version> <!-- Set to your desired release version -->
 	<name>exception-handler-service</name>
 	<description>This library will handle exceptions throughout the application</description>
 
@@ -22,24 +22,26 @@
 	</properties>
 
 	<dependencies>
-		<!-- Only include this if you need web classes like @ControllerAdvice -->
+		<!-- Spring Web Dependency (for @ControllerAdvice and other web features) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- Lombok Dependency (for reducing boilerplate code) -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
 
-		<!-- Feign client (if needed), updated for Spring Boot 3.x -->
+		<!-- Spring Cloud OpenFeign Dependency (if you need Feign clients) -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 
+		<!-- Spring Boot Test Dependency (for testing purposes) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -49,7 +51,7 @@
 
 	<build>
 		<plugins>
-			<!-- Proper compiler plugin setup -->
+			<!-- Maven Compiler Plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -69,7 +71,16 @@
 		</plugins>
 	</build>
 
-	<!-- Spring Cloud compatibility -->
+	<!-- Distribution Management to deploy to GitHub Packages -->
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Packages</name>
+			<url>https://maven.pkg.github.com/Fintrust-Project/exception-handler-service</url>
+		</repository>
+	</distributionManagement>
+
+	<!-- Spring Cloud Dependency Management (for Spring Cloud features compatibility) -->
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -81,4 +92,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 </project>
