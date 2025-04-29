@@ -1,5 +1,6 @@
 package com.fintrust.exception_handler_service.exception;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class IllegalArgumentExceptionHandler implements ExceptionHandler{
     @Override
+    @PostConstruct
     public void init() {
         ExceptionHandlerFactory.add(IllegalArgumentException.class, this);
     }
