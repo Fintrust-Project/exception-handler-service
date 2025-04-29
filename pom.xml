@@ -13,7 +13,7 @@
 
 	<groupId>com.fintrust</groupId>
 	<artifactId>exception-handler-service</artifactId>
-	<version>1.0.0</version> <!-- Set to your desired release version -->
+	<version>1.0.1</version> <!-- Set to your desired release version -->
 	<name>exception-handler-service</name>
 	<description>This library will handle exceptions throughout the application</description>
 
