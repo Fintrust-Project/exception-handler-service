@@ -18,7 +18,7 @@ public class NullPointerExceptionHandler implements ExceptionHandler{
     public ResponseEntity<?> handleException(Exception e) {
         return new ResponseEntity<>(ErrorMessage.builder()
                 .description(e.getMessage())
-                .httpStatus(HttpStatus.INTERNAL_SERVER_ERROR).build(),
+                .httpStatus(HttpStatus.BAD_REQUEST).build(),
                 HttpStatus.BAD_REQUEST);
     }
 }
