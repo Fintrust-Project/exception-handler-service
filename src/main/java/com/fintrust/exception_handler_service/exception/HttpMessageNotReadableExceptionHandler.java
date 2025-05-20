@@ -22,12 +22,12 @@ public class HttpMessageNotReadableExceptionHandler implements ExceptionHandler{
     @Override
     public ResponseEntity<?> handleException(Exception e) {
         String errorDetails = "unacceptable json";
-        if(e.getCause() instanceof InvalidFormatException){
-            final InvalidFormatException invalidFormatException = (InvalidFormatException) e.getCause();
+        if(e.getCause() instanceof InvalidFormatException invalidFormatException){
             if(invalidFormatException.getTargetType().isEnum()){
-                errorDetails = String.format("Invalid enum values: '%s' . The value must be one of : '%s'", invalidFormatException.getValue(),
-                        invalidFormatException.getPath().get(invalidFormatException.getPath().size()-1).getFieldName(),
-                        Arrays.toString(invalidFormatException.getTargetType().getEnumConstants()));
+                errorDetails =
+                    String.format("Invalid enum values: '%s' for the field '%s' . The value must be one of : '%s'", invalidFormatException.getValue(),
+                    invalidFormatException.getPath().get(invalidFormatException.getPath().size()-1).getFieldName(),
+                    Arrays.toString(invalidFormatException.getTargetType().getEnumConstants()));
             }
         }
         log.error("Exception occurred while parsing json {}", e.getMessage());
